@@ -1,6 +1,3 @@
-Estructuras de datos
+funciones anonimas
 
-Arreglos
-
-
-Metodos sobre arreglos
+son las que no tienen nombre como las funciones de map, reduce, filter

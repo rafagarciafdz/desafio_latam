@@ -1,188 +1,165 @@
-Piedra Papel o Tijera
-var user1;
-var user2;
-var finDelJuego = false;
-var user1String = "";
-var user2String = "";
-
-while(finDelJuego != true){
-    user1 = parseInt(prompt("Elige:\n 1.- piedra \n 2.- papel \n 3.- tijera"));
-    user2 = Math.floor((Math.random() * 3) + 1);
-
-    if(user1 == user2 ){
-        alert("Empate");
-    } else if((user1 == 1 && user2 == 2) || (user1 == 2 && user2 == 3) || (user1 == 3 && user2 == 1)){
-        switch (user1) {
-            case 1:
-                user1String = "Piedra";
-                break;
-            case 2:
-                user1String = "Papel";
-                break;
-            case 3:
-                user1String = "Tijera";
-                break;
-        }
-        
-        switch (user2) {
-            case 1:
-                user2String = "Piedra";
-                break;
-            case 2:
-                user2String = "Papel";
-                break;
-            case 3:
-                user2String = "Tijera";
-                break;
-        }
-        alert("Gana CPU \n Elegiste " + user1String + "\n CPU eligió " + user2String);
-        finDelJuego = true;
-    } else {
-        switch (user1) {
-            case 1:
-                user1String = "Piedra";
-                break;
-            case 2:
-                user1String = "Papel";
-                break;
-            case 3:
-                user1String = "Tijera";
-                break;
-        }
-        
-        switch (user2) {
-            case 1:
-                user2String = "Piedra";
-                break;
-            case 2:
-                user2String = "Papel";
-                break;
-            case 3:
-                user2String = "Tijera";
-                break;
-        } 
-        alert("Ganaste !!! \n Elegiste " + user1String + "\n CPU eligió " + user2String);
-        finDelJuego = true;
-    }
-}
-
-
-
-
-
-
-Log In
-var password = "password"
-var intento = "";
-var intentos = 10;
-var isLoged = false;
-for(var i = 1; i <= 10; i++, intentos--){
-    intento = prompt("Introduce tu password\nTienes " + intentos + " intentos");
-    if(intento == password){
-        isLoged = true;
-        alert("Loged");
-        break;
-    }
-}
-
-if(!isLoged){
-    alert("FATAL ERROR");
-}
-
-
-
-
-
-
-Sumatorias
-var upTo = parseInt(prompt("Hasta que número quieres sumar"));
-var sumAscendente = 0;
-var sumDescendente = 0;
-
-for(var i = 1; i <= upTo; i++){
-    sumAscendente = sumAscendente + i;
-}
-
-for(var j = upTo; j >= 1; j--){
-    sumDescendente = sumDescendente + j;
-}
-
-alert("Total ascendente= " + sumAscendente);
-alert("Total descendente= " + sumDescendente);
-
-
-
-
-
-
-Detector de números primos
+//N numeros primos
 var number = parseInt(prompt("Introduce un número"));
-var esPrimo = true;
+var counter = 0;
+var numeroVerificable = 2;
+var numeroVerificador = 2;
+var primeNumber = [];
 
-if(number == 1){
-    alert("El número " + number + " NO es PRIMO");
-    esPrimo = false;
-} else{
-      for(var i = 2; i < number; i++){
-          if(number % i == 0){
-              esPrimo = false;
-              alert("El número " + number + " NO es PRIMO");
-              break;
-          }
-      }
+while(counter < number){
+    if(numeroVerificable % numeroVerificador == 0){
+        if(numeroVerificable == numeroVerificador){
+            primeNumber.push(numeroVerificable);
+            numeroVerificable ++;
+            numeroVerificador = 2;
+            counter++
+        } else {
+            numeroVerificable ++;
+            numeroVerificador = 2;
+        }
+    } else {
+        numeroVerificador ++;
+    }
 }
 
-if(esPrimo){
-    alert("El número " + number + " es PRIMO");
+alert(primeNumber);
+
+
+
+
+
+//Recorrido de arreglos
+
+
+
+
+
+
+
+//Manejo de arreglos
+
+var firstNames = ['juan', 'ramiro'];
+var lastNames = ['ramirez', 'garcia'];
+
+firstNames.shift();
+console.log(firstNames);
+
+firstNames.unshift('zaira');
+console.log(firstNames);
+
+firstNames.sort();
+console.log(firstNames);
+
+firstNames.concat(lastNames);
+console.log(firstNames);
+
+firstNames.join(", ");
+console.log(firstNames);
+
+
+
+
+
+
+//Funciones
+var firstNames = ['juan', 'ramiro'];
+var lastNames = ['ramirez', 'garcia'];
+var array01 = [0,1,2,3,4];
+var age = [10,15,21,10,18,45,54];
+
+var fullNames = firstNames.map(function(firstName){ 
+                                            return firstName + " Perez"
+                                        });
+
+console.log(fullNames);
+
+var sumatoria = array01.reduce(function(prevValue, currValue, index, array){
+                                    return prevValue + currValue;
+                               });
+
+console.log(sumatoria);
+
+var grownUps = age.filter(function(age){
+    return age >= 18;
+});
+
+console.log(grownUps);
+
+
+
+
+
+
+//Funciones con mayor complejidad
+var people = [{name: "Casimira", age: 21, pets: ['rocky', 'rambo']},
+              {name: "Pedro", age: 15, pets: ['mj', 'coco']},
+              {name: "Juan", age: 67, pets: []}];
+
+var peopleNoPets = people.filter(function(guy){
+    return guy.pets.length == 0;
+});
+console.log(peopleNoPets);
+
+var peopleNoPets = people.filter(function(guy){
+    return guy.pets.length == 0;
+}).map(function(guy){
+    return guy.name;
+});
+console.log(peopleNoPets);
+
+var peopleNoPets = people.filter(function(guy){
+    return guy.pets.length > 0;
+}).map(function(guy){
+    return guy.age;
+}).reduce(function(prevValue, currValue, index, array){
+    return prevValue + currValue;
+});
+console.log(peopleNoPets);
+
+
+
+
+var people = [{name: "Casimira", age: 21, pets: ['rocky', 'rambo']},
+              {name: "Pedro", age: 15, pets: ['mj', 'coco']},
+              {name: "Juan", age: 67, pets: []}];
+
+var peopleNoPets = people.filter(function(guy){
+    return guy.pets.length == 0;
+});
+console.log(peopleNoPets);
+
+var peopleNoPets = people.filter(function(guy){
+    return guy.pets.length == 0;
+}).map(function(guy){
+    return guy.name;
+});
+console.log(peopleNoPets);
+
+var peopleNoPets = people.filter(function(guy){
+    return guy.pets.length > 0;
+}).map(function(guy){
+    return guy.age;
+}).reduce(function(prevValue, currValue, index, array){
+    return prevValue + currValue;
+});
+console.log(peopleNoPets);
+
+
+
+
+function getPeopleNoPets(people){
+    return people.filter(function(guy){
+        return guy.pets.length == 0;
+    })
+};
+
+console.log(getPeopleNoPets(people));
+
+function getSumAgesPeoplePets(people){
+    return getPeopleNoPets.map(function(guy){
+        return guy.age;
+    }).reduce(function(prev, curr){
+        return prev + curr;
+    });
 }
 
-
-
-
-
-
-Generar los n numeros primos
-
-
-
-
-
-
-Manejo de arreglos
-
-var userList = ["juan", "pedro", 10, 10.5];
-var emptyList = [];
-
-var userListSize = userList.length;
-var emptyListSize = emptyList.length;
-
-alert(userList + "\nTamaño = "+ userListSize);
-alert(emptyList + "\nTamaño = "+ emptyListSize);
-
-for(var i = 0; i < userList.length; i++){
-    console.log(userList[i]);
-}
-
-
-var array = [2,3,"Hola",variable,false];
-aux = array[1];
-array[1] = array[2];
-array[2] = aux;
-
-
-
-
-
-
-var userList = ["juan", "pedro"];
-var numberList = [1,2,3,4];
-
-userList.push("Juanito");
-console.log(userList);
-userList.pop();
-console.log(userList);
-
-numberList.unshift(10);
-console.log(numberList);
-numberList.shift();
-console.log(numberList);
+console.log(getSumAgesPeoplePets(people));
