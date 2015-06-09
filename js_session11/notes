@@ -1,0 +1,2 @@
+comando para instalar bien la gema de postgresql
+sudo apt-get install libpq-dev
