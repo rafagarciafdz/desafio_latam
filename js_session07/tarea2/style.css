@@ -1,0 +1,13 @@
+.time-is-up{
+    background-color: red;
+    font-size: 60px;
+    color: white;
+    padding: 5px;
+}
+
+.on-time {
+    background-color: green;
+    font-size: 60px;
+    color: white;
+    padding: 5px;
+}
