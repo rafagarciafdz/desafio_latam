@@ -1,0 +1,9 @@
+comandos para ejecutar ruby en consola
+
+require_relative nombre del archivo
+para abrir un archivo
+
+irb para abrir linea de comando ruby
+
+ruby nombre de archivo 
+para ejecutar el archivo
